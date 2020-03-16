@@ -1,0 +1,29 @@
+.side-bar-item {
+   background-color: white;
+}
+
+.item-title {
+   padding: 0.5em 0.5em;
+   font-weight: bold;
+}
+
+.item-title:hover {
+   background-color: #485460;
+   color: white;
+}
+
+.item-title:hover {
+   cursor: pointer;
+}
+
+.sub-menu {
+   margin-left: 0.5em;
+}
+
+.hide-animation {
+   opacity: 0;
+}
+
+.show-animation {
+   opacity: 1;
+}

@@ -1,0 +1,23 @@
+.commune-card {
+   width: 200px;
+   position: relative;
+   top: 0;
+   transition: top 0.2s ease-in-out;
+}
+
+.commune-card:hover {
+   box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important;
+   top: -3px;
+}
+
+.province, .district, .zip-code {
+   font-size: 1em;
+}
+
+.card-body {
+   background-color: #3c6382;
+}
+
+.commune-info {
+   font-size: 0.9em;
+}

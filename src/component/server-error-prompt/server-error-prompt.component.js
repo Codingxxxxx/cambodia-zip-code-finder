@@ -5,7 +5,7 @@ export default class ServerErrorPrompt extends React.Component {
 
    render() {
       return (
-         <div class="alert alert-danger" style={alertStyle} role="alert">
+         <div className="alert alert-danger" style={alertStyle} role="alert">
             Sorry! We could not connect to server :(
          </div>
       );

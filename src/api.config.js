@@ -6,7 +6,7 @@ if (activeMode === 'dev') {
    baseAPIGateway = `${host}:${port}`;
 } else if (activeMode === 'prod') {
    const {host, port} = prod.api;
-   if (port === '') {
+   if (!port) {
       baseAPIGateway = `${host}`;
    } else {
       baseAPIGateway = `${host}:${port}`

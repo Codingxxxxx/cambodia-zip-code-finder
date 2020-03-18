@@ -16,25 +16,15 @@ class CommuneFinder extends React.Component {
       this.alertResultElement = createRef();
    }
 
-   componentDidUpdate(previousProps, previousState, snapshot) {
-      if (previousState.communeName === this.state.communeName) {
-         if (this.props.foundCommunes.length > 0) {
-            toggleClass(this.alertResultElement.current, 'd-none', 'remove');
-            toggleClass(this.alertResultElement.current, 'd-flex', 'add');
-            toggleClass(this.alertResultElement.current, 'alert-success', 'add');
-            toggleClass(this.alertResultElement.current, 'alert-danger', 'remove');
-         } else {
-            toggleClass(this.alertResultElement.current, 'd-none', 'remove');
-            toggleClass(this.alertResultElement.current, 'd-flex', 'add');
-            toggleClass(this.alertResultElement.current, 'alert-success', 'remove');
-            toggleClass(this.alertResultElement.current, 'alert-danger', 'add');
-         }
-      }
-
+   componentDidUpdate(prevProps, prevState, snapshot) {
       if (this.props.isFetching === true) {
          showLoading();
       } else {
          hideLoading();
+      }
+
+      if (this.props.isFetching === false && prevState.communeName === this.state.communeName) {
+         this.alertFoundMessage();
       }
    }
    
@@ -80,6 +70,20 @@ class CommuneFinder extends React.Component {
          communeName = communeName.substr('ឃុំ'.length, communeName.length);
       }
       this.props.searchCommunes(communeName);
+   }
+
+   alertFoundMessage() {
+      if (this.props.foundCommunes.length > 0) {
+         toggleClass(this.alertResultElement.current, 'd-none', 'remove');
+         toggleClass(this.alertResultElement.current, 'd-flex', 'add');
+         toggleClass(this.alertResultElement.current, 'alert-success', 'add');
+         toggleClass(this.alertResultElement.current, 'alert-danger', 'remove');
+      } else {
+         toggleClass(this.alertResultElement.current, 'd-none', 'remove');
+         toggleClass(this.alertResultElement.current, 'd-flex', 'add');
+         toggleClass(this.alertResultElement.current, 'alert-success', 'remove');
+         toggleClass(this.alertResultElement.current, 'alert-danger', 'add');
+      }
    }
 
 }

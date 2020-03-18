@@ -1,8 +1,10 @@
-import {SEARCH_COMMUNE_BY_DISTRICT, SEARCH_COMMUNE_BY_TEXT, FETCHING_DATA, RECIEVED_DATA} from './action.type';
+import {SEARCH_COMMUNE_BY_DISTRICT, SEARCH_COMMUNE_BY_TEXT, FETCHING_DATA, RECIEVED_DATA, FETCHED_DISTRICT, FETCHING_DISTRICT, FETCH_PROVINCE, STOP_FETCH_PROVINCE} from './action.type';
 
 const defaultValues = {
    communes: [],
-   isFetching: false
+   isFetching: false,
+   fetchingDistrict: false,
+   fetchProvince: false
 };
 
 export function reducer(state = defaultValues, action) {
@@ -17,6 +19,18 @@ export function reducer(state = defaultValues, action) {
          break;
       case RECIEVED_DATA:
          newState.isFetching = false
+         break;
+      case FETCHING_DISTRICT:
+         newState.fetchingDistrict = true;
+         break;
+      case FETCHED_DISTRICT:
+         newState.fetchingDistrict = false;
+         break;
+      case FETCH_PROVINCE:
+         newState.fetchProvince = true;
+         break;
+      case STOP_FETCH_PROVINCE:
+         newState.fetchProvince = false;
          break;
       default:
          break;

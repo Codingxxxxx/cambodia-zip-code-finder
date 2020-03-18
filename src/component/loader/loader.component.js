@@ -5,8 +5,11 @@ export default class Loader extends React.Component {
    render() {
       return (
          <div id="loader" className="bg-light border border-primary shadow d-none" style={loaderContainerStyle}>
-            <div className="spinner-border text-primary" role="status" style={loaderStyle}>
-               <span className="sr-only">Loading...</span>
+            <div className="d-flex flex-column justify-content-center align-items-center">
+               <div className="spinner-border text-primary" role="status" style={loaderStyle}>
+                  <span className="sr-only">Loading...</span>
+               </div>
+               <h5 className="text-center mt-3" style={loadingTitleStyle}>កំពុងដំណើរការ​ សូមរង់ចាំ</h5>
             </div>
          </div>
       );
@@ -19,6 +22,11 @@ const loaderStyle = {
    width: '5em',
    height: '5em',
    borderWidth: '0.5em',
+}
+
+const loadingTitleStyle = {
+   fontFamily: 'hanuman',
+   fontSize: '1.1em'
 }
 
 const loaderContainerStyle = {

@@ -3,10 +3,6 @@ import './commune-card.style.css';
 
 export default class CommuneCard extends React.Component {
 
-   constructor(props) {
-      super(props);
-   }
-
    render() {
       return (
          <div className="card commune-card shadow-sm m-2">

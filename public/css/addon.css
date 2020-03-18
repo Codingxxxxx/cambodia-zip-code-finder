@@ -5,3 +5,13 @@
    -o-user-select: none;
    user-select: none;
 }
+
+@font-face {
+   font-family: "hanuman";
+   src: url("../fonts/Hanuman-Regular.woff") format("woff");
+}
+
+@font-face {
+   font-family: "koulen";
+   src: url("../fonts/Koulen-Regular.woff") format("woff");
+}

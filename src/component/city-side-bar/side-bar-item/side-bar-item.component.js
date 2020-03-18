@@ -30,7 +30,6 @@ export default class SideBarItem extends React.Component {
 
    formatProvinceName(provinceName, language) {
       const prefixKh = 'ខេត្ត';
-      const prefixEn = 'province';
       if (language === 'en') {
 
       } else if (language === 'kh') {
@@ -49,7 +48,6 @@ export default class SideBarItem extends React.Component {
             const districts = responseJson;
             this.setState({districts: districts});
          } catch (error) {
-            console.log('Error');
             return;
          }
       }

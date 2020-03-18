@@ -27,7 +27,8 @@ function mapDispachToProps(dispach) {
 
 function mapStateToProps(state) {
    return {
-      communes: state.communes
+      communes: state.communes,
+      isFetching: state.isFetching
    }
 }
 

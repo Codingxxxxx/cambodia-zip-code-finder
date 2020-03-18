@@ -1,9 +1,10 @@
 import React, { createRef } from 'react';
 import CommuneCard from '../commune-card/commune-card.component';
-import {searchCommunes} from './../../api/province.api';
 import toggleClass from './../../provider/class-toggler';
 import {connect} from 'react-redux';
 import {searchCommuneByName} from './../../reducer/action.creator';
+import './commune-finder.style.css';
+import {hideLoading, showLoading} from './../../provider/show.loading';
 
 class CommuneFinder extends React.Component {
 
@@ -29,6 +30,12 @@ class CommuneFinder extends React.Component {
             toggleClass(this.alertResultElement.current, 'alert-danger', 'add');
          }
       }
+
+      if (this.props.isFetching === true) {
+         showLoading();
+      } else {
+         hideLoading();
+      }
    }
    
    render() {
@@ -38,7 +45,7 @@ class CommuneFinder extends React.Component {
       const alertResultMessage = this.props.foundCommunes.length > 0 ? `បានរកឃើញលទ្ធផលចំនួន ${this.props.foundCommunes.length}` : `មិនមានលទ្ទផល`;
 
       return (
-         <div className="flex-grow-1 h-100 p-5 overflow-auto">
+         <div className="flex-grow-1 h-100 p-5 overflow-auto result-box">
             <form id="form-search-commune" className="" onSubmit={(evt) => this.findCommune(evt)}>
                <div className="form-group">
                   <div className="input-group">
@@ -63,7 +70,16 @@ class CommuneFinder extends React.Component {
       if (!this.state.communeName) {
          return;
       }
-      this.props.searchCommunes(this.state.communeName);
+      let communeName = this.state.communeName;
+      if (communeName === 'សង្កាត់' || communeName === 'ឃុំ') {
+         return;
+      }
+      if (communeName.startsWith('សង្កាត់')) {
+         communeName = communeName.substr('សង្កាត់'.length, communeName.length);
+      } else if (communeName.startsWith('ឃុំ')) {
+         communeName = communeName.substr('ឃុំ'.length, communeName.length);
+      }
+      this.props.searchCommunes(communeName);
    }
 
 }
@@ -74,7 +90,8 @@ const resultAlertStyle = {
 
 function mapStateToProps(state) {
    return {
-      foundCommunes: state.communes
+      foundCommunes: state.communes,
+      isFetching: state.isFetching
    }
 }
 
